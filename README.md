@@ -41,7 +41,9 @@ Requirements: Node.js 18+ and a running MongoDB instance or MongoDB Atlas cluste
    ```bash
    npm run dev
    ```
-5. Open http://localhost:5173
+5. Open the client URL printed by Vite (usually http://localhost:5173). If the backend's
+   configured port is already in use, the dev launcher automatically selects another
+   available port and connects the client to it.
 
 To see real-time chat, sign up a second account in a different browser or an incognito window.
 
@@ -69,10 +71,10 @@ To use Cloudinary instead, fill in `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`
 ## Structure
 ```
 quickchat/
-├─ server/   Express API + Socket.io (port 5000)
+├─ server/   Express API + Socket.io (port 5000 by default)
 │  ├─ controllers/  models/  routes/  middleware/  lib/
 │  └─ server.js
-└─ client/   React + Vite + Tailwind (port 5173)
+└─ client/   React + Vite + Tailwind (port 5173 by default; Vite selects another if busy)
    └─ src/  pages/  components/  context/
 ```
 
