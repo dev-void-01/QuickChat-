@@ -3,8 +3,11 @@ import express from "express";
 import cors from "cors";
 import { app, server } from "./lib/socket.js";
 import { connectDB } from "./lib/db.js";
+import { getJwtSecret } from "./lib/jwtSecret.js";
 import userRouter from "./routes/userRoutes.js";
 import messageRouter from "./routes/messageRoutes.js";
+
+getJwtSecret();
 
 app.use(express.json({ limit: "10mb" }));
 app.use(cors({ origin: true, credentials: true }));

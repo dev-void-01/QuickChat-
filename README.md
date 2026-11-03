@@ -29,9 +29,14 @@ Requirements: Node.js 18+ and a running MongoDB instance or MongoDB Atlas cluste
    Copy-Item server/.env.example server/.env
    Copy-Item client/.env.example client/.env
    ```
-3. Set `MONGODB_URI` in `server/.env` to your MongoDB connection string, and replace
-   `JWT_SECRET` with a long, unique random value. Never commit `.env` files or share
-   their contents. The `.env.example` files contain placeholders and are safe to commit.
+3. Set `MONGODB_URI` in `server/.env` to your MongoDB connection string. Generate a
+   unique JWT secret with:
+   ```bash
+   node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"
+   ```
+   Put the result in `JWT_SECRET`. The server refuses to start without a strong secret.
+   Never commit `.env` files or share their contents. The `.env.example` files contain
+   placeholders and are safe to commit.
 4. Start the server and client:
    ```bash
    npm run dev
